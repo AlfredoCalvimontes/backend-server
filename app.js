@@ -17,7 +17,12 @@
     // Importar rutas
     var appRoutes = require('./routes/app');
     var usuarioRoutes = require('./routes/usuario');
+    var medicoRoutes = require('./routes/medico');
+    var hospitalesRoutes = require('./routes/hospital');
     var loginRoutes = require('./routes/login');
+    var busquedaRoutes = require('./routes/busqueda');
+    var uploadRoutes = require('./routes/upload');
+    var imagenesRoutes = require('./routes/imagenes');
 
     //  ------------
 
@@ -30,10 +35,20 @@
 
     });
 
+    // Serve-index config (forma alternativa de mostrar imagenes a la dle curso)
+
+    var serveIndex = require('serve-index');
+    // app.use(express.static(__dirname + '/'));
+    // app.use('/uploads', serveIndex(__dirname + '/uploads'));
 
     // Rutas
     app.use('/usuario', usuarioRoutes); // Tiene que definirse arriba de la raiz
+    app.use('/medico', medicoRoutes);
+    app.use('/hospital', hospitalesRoutes);
     app.use('/login', loginRoutes);
+    app.use('/busqueda', busquedaRoutes);
+    app.use('/upload', uploadRoutes);
+    app.use('/imagenes', imagenesRoutes);
     app.use('/', appRoutes); // Cadq que llegue e raiz ('/'), redireccionar a appRoutes
 
 
